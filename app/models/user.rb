@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :questions
   has_many :answers
+  has_many :tags
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
 
