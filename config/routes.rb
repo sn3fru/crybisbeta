@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tags
+
   resources :questions
 
   devise_for :admin_users, ActiveAdmin::Devise.config
