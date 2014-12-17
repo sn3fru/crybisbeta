@@ -1,5 +1,6 @@
-<h1>New sub_category</h1>
+<%- model_class = SubCategory -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => SubCategory %></h1>
+</div>
+<%= render :partial => 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', sub_categories_path %>
