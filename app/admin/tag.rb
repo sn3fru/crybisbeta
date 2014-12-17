@@ -1,4 +1,5 @@
 ActiveAdmin.register Tag do
+  permit_params :tags
 
 
   # See permitted parameters documentation:
