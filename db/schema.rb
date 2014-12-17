@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217161711) do
+ActiveRecord::Schema.define(version: 20141217161824) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -46,6 +46,28 @@ ActiveRecord::Schema.define(version: 20141217161711) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
+  create_table "answers", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "proposta"
+    t.integer  "value"
+    t.string   "prospect"
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+  add_index "answers", ["user_id"], name: "index_answers_on_user_id"
+
+  create_table "categories", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -61,6 +83,37 @@ ActiveRecord::Schema.define(version: 20141217161711) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "questions", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "bounty"
+    t.string   "prospect"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id"
+
+  create_table "sub_categories", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sub_categories", ["category_id"], name: "index_sub_categories_on_category_id"
+
+  create_table "tags", force: true do |t|
+    t.string   "tags"
+    t.integer  "sub_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["sub_category_id"], name: "index_tags_on_sub_category_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -79,11 +132,26 @@ ActiveRecord::Schema.define(version: 20141217161711) do
     t.string   "uid"
     t.string   "name"
     t.string   "username"
+    t.string   "interesses"
+    t.text     "feedbaack"
+    t.string   "level"
+    t.integer  "coins"
+    t.decimal  "acuracia"
+    t.text     "perguntas"
+    t.text     "respostas"
+    t.text     "formacao"
+    t.text     "inbox"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
+
+  create_table "users_users", force: true do |t|
+    t.integer "user_id"
+  end
+
+  add_index "users_users", ["user_id"], name: "index_users_users_on_user_id"
 
   create_table "votes", force: true do |t|
     t.integer  "votable_id"
