@@ -1,5 +1,5 @@
 class SubCategoriesController < ApplicationController
-  before_action :set_sub_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_sub_category, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /sub_categories
   # GET /sub_categories.json
