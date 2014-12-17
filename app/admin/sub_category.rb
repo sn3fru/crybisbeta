@@ -1,4 +1,5 @@
 ActiveAdmin.register SubCategory do
+  permit_params :title, :description
 
 
   # See permitted parameters documentation:
