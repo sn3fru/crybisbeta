@@ -1,4 +1,5 @@
 ActiveAdmin.register Answer do
+  permit_params :title, :body, :proposta, :value, :prospect
 
 
   # See permitted parameters documentation:
