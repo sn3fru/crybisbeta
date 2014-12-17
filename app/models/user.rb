@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   #->Prelang (user_login/devise)
   has_and_belongs_to_many :users
+  has_many :questions
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
 
