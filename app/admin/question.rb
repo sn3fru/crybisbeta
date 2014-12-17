@@ -1,4 +1,5 @@
 ActiveAdmin.register Question do
+  permit_params :title, :body, :bounty, :prospect
 
 
   # See permitted parameters documentation:
