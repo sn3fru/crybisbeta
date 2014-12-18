@@ -10,6 +10,13 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
   has_many :tags
+  has_many :replies, :through => :questions, :source => :answers
+
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
 
