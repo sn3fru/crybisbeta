@@ -1,23 +1,69 @@
-require File.expand_path('../boot', __FILE__)
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= "Socialbeam" %></title>
+   <!-- Javascripts
+    ================================================== -->
+   <%= javascript_include_tag :all %>
+   <!-- Stylesheets
+    ================================================== -->
+    <%= stylesheet_link_tag    "application" %>
+    <%= csrf_meta_tags %>
 
-require 'rails/all'
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+  </head>
+  <body>
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Socialbeam</a>
+          <div class="container nav-collapse">
+            <ul class="nav">
+              <li><%= link_to "Home", ""  %></li>
+              <li><%= link_to "My Account", ""  %></li>
+              <li><%= link_to "Settings", ""  %></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-module Crybisbeta
-  class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    <div class="container">
+        <div class="row">
+        <div class="span3">
+            <div class="well sidebar-nav">
+              <h3>Sidebar</h3>
+              <ul class="nav nav-list">
+                <li class="nav-header">Beamer</li>
+                <li><%= link_to "Home", ""  %></li>
+                <li><%= link_to "Profile", ""  %></li>
+                <li><%= link_to "Messaging", ""  %></li>
+              </ul>
+            </div><!--/.well -->
+          </div><!--/span-->
+          <div class="span9">
+             <%= yield %>
+          </div>
+        </div><!--/row-->
 
-    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
-    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
+      <footer>
+        <p>&copy; Socialbeam 2012</p>
+      </footer>
 
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
-  end
-end
+    </div> <!-- /container -->
+
+
+  </body>
+</html>

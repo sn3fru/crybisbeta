@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'browse/home'
+
+  get 'browse/profile'
+
+  get 'browse/message'
+
+  get 'browse/aboutus'
+
   get 'landings/index'
 
   resources :categories do
@@ -42,7 +50,7 @@ end
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'landings#index'
+root :to => 'browse#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
