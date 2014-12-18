@@ -23,6 +23,7 @@
         <td><%= question.bounty %></td>
         <td><%= question.prospect %></td>
         <td><%=l question.created_at, format: :long %></td>
+        <td><%= question.avatar %></td>
         <td>
           <%= link_to question_path(question), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
